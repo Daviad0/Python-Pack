@@ -2,6 +2,7 @@ x = 0
 y = 0
 calculator = "l"
 calcvalue = "Y"
+mmode = "T"
 print ("PYTHON SIMPLE CALCULATOR")
 while calcvalue == "Y":
   while calculator.lower() == "l":
@@ -16,6 +17,7 @@ while calcvalue == "Y":
       print ("[D] Divide 2 numbers (Can be x or y)")
       print ("[SX] Set value of x")
       print ("[SY] Set value of y")
+      print ("[M] Go into saved value mode")
       input ("")
   if calculator.lower() == "a":
     fn = input ("Enter in the first number! (Can be x or y)\n[Calculator] > ")
@@ -103,3 +105,44 @@ while calcvalue == "Y":
       y = float(setvalue)
     print ("[Value Set] > The value of Y has been set to " + str(setvalue) + "\n")
     calculator = "l"
+  if calculator.lower() == "m":
+    while mmode == "Y":
+      mc = "l"
+      m = 0
+      while mc == "l":
+        print ("< Saved Value Mode >")
+        print ("Please choose an option (Type L to list options)")
+        mc = input ("[MMode] > ")
+        if mc == "l":
+          print ("MMode Commands:")
+          print ("[A] Add a value to the total")
+          print ("[S] Subtract a value from the total")
+          print ("[T] Multiply a number by the total")
+          print ("[D] Divide the total by a number")
+          print ("[P] Show the value of the total")
+          print ("[R] Reset the value to '0'")
+          print ("[E] Exit MMode (VALUES SAVED)")
+      if mc.lower() == "a":
+        print ("Enter a number to add to the total")
+        mmv = input ("[MMode] > ")
+        m += float(mmv)
+        print ("Added " + str(mmv) + " to the total!")
+      if mc.lower() == "s":
+        print ("Enter a number to subtract from the total")
+        mmv = input ("[MMode] > ")
+        m -= float(mmv)
+      print ("Subtracted " + str(mmv) + " from the total!")
+      if mc.lower() == "t":
+        print ("Enter a number to multiply the total by")
+        mmv = input ("[MMode] > ")
+        m *= float(mmv)
+        print ("Multiplied the total by " + str(mmv))
+      if mc.lower() == "d":
+        print ("Enter a number to divide the total by")
+        mmv = input ("[MMode] > ")
+        m -= float(mmv)
+        print ("Divided the total by " + str(mmv))
+      if mc.lower() == "p":
+        print ("Total value is " + str(m))
+      
+    
