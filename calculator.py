@@ -20,8 +20,26 @@ while calcvalue == "Y":
       print ("[SY] Set value of y")
       print ("[PX] Show value of x")
       print ("[PY] Show value of y")
+      print ("[AX] Adds a value to x")
+      print ("[AY] Adds a value to y")
       print ("[M] Go into saved value mode")
+      print ("General Commands:")
+      print ("[B] Shows current bugs and issues")
+      print ("[U] Shows update info")
+      print ("[CI] Shows calculator app info")
       input ("")
+  if calculator.lower() == "b":
+    print ("Known Bugs:")
+    print ("[2/14/18 3:50] [Not Fixed] Sometimes the code doesn't work with x or y values\n")
+    calculator = "l"
+  if calculator.lower() == "u":
+    print ("Update Info:")
+    print ("[2/14/18] [Version 1.0.1X] Update Info not released yet for this version. No other versions found.\n")
+    calculator = "l"
+  if calculator.lower() == "ci":
+    print ("Calculator Info:")
+    print ("Calculator info not given as Version 1.1.0 and below are closed beta versions.\n")
+    calculator = "l"
   if calculator.lower() == "a":
     fn = input ("Enter in the first number! (Can be x or y)\n[Calculator] > ")
     sn = input ("Enter in the second number! (Can be x or y)\n[Calculator] > ")
@@ -87,6 +105,7 @@ while calcvalue == "Y":
     print ("[Result] > " + str(answer) + "\n")
     calculator = "l"
   if calculator.lower() == "sx":
+    xory = False
     while xory == False:
       setvalue = input ("Enter in the value of X:\n[Calculator] > ")
       if setvalue == "":
@@ -106,7 +125,8 @@ while calcvalue == "Y":
         print ("[Value Set] > The value of X has been set to " + str(setvalue) + "\n")
         calculator = "l"
   if calculator.lower() == "sy":
-while xory == False:
+    xory = False
+    while xory == False:
       setvalue = input ("Enter in the value of Y:\n[Calculator] > ")
       if setvalue == "":
         xory = False
@@ -169,5 +189,51 @@ while xory == False:
     else:
       print ("The value of x is " + str(x))
     calculator = "l"
+  if calculator.lower() == "py":
+    if y == "":
+      print ("y does not have a value!")
+    else:
+      print ("The value of y is " + str(x))
+    calculator = "l"
+  if calculator.lower() == "ax":
+    xory = False
+    while xory == False:
+      addvalue = input ("Enter in the value to add to X:\n[Calculator] > ")
+      if addvalue == "":
+        xory = False
+        print ("Error Code c04: You have to add SOME value!")
+      else:
+        xory = True
+      if addvalue.lower() == "x" or addvalue.lower() == "y":
+        if addvalue.lower() == "x":
+          x += x
+        else:
+          x += y
+      else:
+        if xory == True:
+          x += float(addvalue)
+      if xory == True:
+        print ("[Value Added] > The value " + str(addvalue) + " has been added to x. The value of x is now " + str(x) + ".\n")
+        calculator = "l"
+  if calculator.lower() == "ay":
+    xory = False
+    while xory == False:
+      addvalue = input ("Enter in the value to add to Y:\n[Calculator] > ")
+      if addvalue == "":
+        xory = False
+        print ("Error Code c04: You have to add SOME value!")
+      else:
+        xory = True
+      if addvalue.lower() == "x" or addvalue.lower() == "y":
+        if addvalue.lower() == "y":
+          y += y
+        else:
+          y += x
+      else:
+        if xory == True:
+          y += float(addvalue)
+      if xory == True:
+        print ("[Value Added] > The value " + str(addvalue) + " has been added to y. The value of y is now " + str(y) + ".\n")
+        calculator = "l"
       
     
