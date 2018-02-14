@@ -1,5 +1,6 @@
-x = 0
-y = 0
+x = ""
+y = ""
+xory = False
 calculator = "l"
 calcvalue = "Y"
 mmode = "T"
@@ -17,6 +18,8 @@ while calcvalue == "Y":
       print ("[D] Divide 2 numbers (Can be x or y)")
       print ("[SX] Set value of x")
       print ("[SY] Set value of y")
+      print ("[PX] Show value of x")
+      print ("[PY] Show value of y")
       print ("[M] Go into saved value mode")
       input ("")
   if calculator.lower() == "a":
@@ -84,27 +87,43 @@ while calcvalue == "Y":
     print ("[Result] > " + str(answer) + "\n")
     calculator = "l"
   if calculator.lower() == "sx":
-    setvalue = input ("Enter in the value of X:\n[Calculator] > ")
-    if setvalue.lower() == "x" or setvalue.lower() == "y":
-      if setvalue.lower() == "x":
-        print ("Error Code c01: Value entered is the same as existing value. Returning to main menu!")
+    while xory == False:
+      setvalue = input ("Enter in the value of X:\n[Calculator] > ")
+      if setvalue == "":
+        xory = False
+        print ("Error Code c02: The variable has to have a value.")
       else:
-        x = y
-    else:
-      x = float(setvalue)
-    print ("[Value Set] > The value of X has been set to " + str(setvalue) + "\n")
-    calculator = "l"
+        xory = True
+      if setvalue.lower() == "x" or setvalue.lower() == "y":
+        if setvalue.lower() == "x":
+          print ("Error Code c01: Value entered is the same as existing value. Returning to main menu!")
+        else:
+          x = y
+      else:
+        if xory == True:
+          x = float(setvalue)
+      if xory == True:
+        print ("[Value Set] > The value of X has been set to " + str(setvalue) + "\n")
+        calculator = "l"
   if calculator.lower() == "sy":
-    setvalue = input ("Enter in the value of Y:\n[Calculator] > ")
-    if setvalue.lower() == "x" or setvalue.lower() == "y":
-      if setvalue.lower() == "y":
-        print ("Error Code c01: Value entered is the same as existing value. Returning to main menu!")
+while xory == False:
+      setvalue = input ("Enter in the value of Y:\n[Calculator] > ")
+      if setvalue == "":
+        xory = False
+        print ("Error Code c02: The variable has to have a value.")
       else:
-        y = x
-    else:
-      y = float(setvalue)
-    print ("[Value Set] > The value of Y has been set to " + str(setvalue) + "\n")
-    calculator = "l"
+        xory = True
+      if setvalue.lower() == "x" or setvalue.lower() == "y":
+        if setvalue.lower() == "y":
+          print ("Error Code c01: Value entered is the same as existing value. Returning to main menu!")
+        else:
+          y = x
+      else:
+        if xory == True:
+          y = float(setvalue)
+      if xory == True:
+        print ("[Value Set] > The value of Y has been set to " + str(setvalue) + "\n")
+        calculator = "l"
   if calculator.lower() == "m":
     while mmode == "Y":
       mc = "l"
@@ -140,9 +159,15 @@ while calcvalue == "Y":
       if mc.lower() == "d":
         print ("Enter a number to divide the total by")
         mmv = input ("[MMode] > ")
-        m -= float(mmv)
+        m /= float(mmv)
         print ("Divided the total by " + str(mmv))
       if mc.lower() == "p":
         print ("Total value is " + str(m))
+  if calculator.lower() == "px":
+    if x == "":
+      print ("x does not have a value!")
+    else:
+      print ("The value of x is " + str(x))
+    calculator = "l"
       
     
